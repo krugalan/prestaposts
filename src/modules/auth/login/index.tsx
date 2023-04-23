@@ -15,6 +15,7 @@ import { loginService } from "../services";
 import { selectLoginError, selectLoginToken } from "../selectors";
 import { useNavigate } from "react-router-dom";
 import { selectLoading } from "../../session/selectors";
+import { SpinnerLoader } from "../../../components/SpinnerLoader";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -31,39 +32,40 @@ export const Login = () => {
   const loginError = useSelector(selectLoginError);
   const token = useSelector(selectLoginToken);
 
-  // useEffect(() => {
-  //   if (token) navigate(`/`);
-  // }, [token, navigate]);
+  useEffect(() => {
+    if (token) navigate(`/`);
+  }, [token, navigate]);
 
   return (
-    <LoginContainer>
-      {isLoading && <ErrorMsg>CARGANDO...</ErrorMsg>}
+    <>
+      <LoginContainer>
+        {isLoading && <SpinnerLoader />}
+        <ContainerForm>
+          <ContentForm>
+            <H1Text>Iniciar sesión</H1Text>
+            <H4Text>Ingrese sus datos para continuar</H4Text>
 
-      <ContainerForm>
-        <ContentForm>
-          <H1Text>Iniciar sesión</H1Text>
-          <H4Text>Ingrese sus datos para continuar</H4Text>
+            <FormInput onSubmit={handleSubmit(onSubmit)}>
+              <InputText
+                defaultValue="eve.holt@reqres.in"
+                placeholder="Email"
+                {...register("email", { required: true })}
+              />
+              {errors.email && <ErrorMsg>El email es requerido</ErrorMsg>}
 
-          <FormInput onSubmit={handleSubmit(onSubmit)}>
-            <InputText
-              defaultValue="eve.holt@reqres.in"
-              placeholder="Email"
-              {...register("email", { required: true })}
-            />
-            {errors.email && <ErrorMsg>El email es requerido</ErrorMsg>}
-
-            <InputText
-              defaultValue="cityslicka"
-              placeholder="Password"
-              type="password"
-              {...register("password", { required: true })}
-            />
-            {errors.password && <ErrorMsg>La password es requerida</ErrorMsg>}
-            {loginError && <ErrorMsg>Error de autenticación</ErrorMsg>}
-            <ButtonSubmit type="submit" />
-          </FormInput>
-        </ContentForm>
-      </ContainerForm>
-    </LoginContainer>
+              <InputText
+                defaultValue="cityslicka"
+                placeholder="Password"
+                type="password"
+                {...register("password", { required: true })}
+              />
+              {errors.password && <ErrorMsg>La password es requerida</ErrorMsg>}
+              {loginError && <ErrorMsg>Error de autenticación</ErrorMsg>}
+              <ButtonSubmit type="submit" />
+            </FormInput>
+          </ContentForm>
+        </ContainerForm>
+      </LoginContainer>
+    </>
   );
 };
