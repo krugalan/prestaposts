@@ -1,17 +1,17 @@
-import { useState } from "react";
 import { Provider } from "react-redux";
-
-import { store } from "./config/store";
-import "./App.css";
+import store, { persistor } from "./config/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { ToastContainer } from "react-toastify";
+import { RoutesProvider } from "./config/RoutesProvider";
+import "./app.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <Provider store={store}>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PersistGate loading={null} persistor={persistor}>
+        <ToastContainer hideProgressBar />
+        <RoutesProvider />
+      </PersistGate>
     </Provider>
   );
 }
