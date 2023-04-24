@@ -2,7 +2,7 @@ import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { HttpClientUsers } from "../../api/HttpClient";
 import { authFailed, login } from "./authSlice";
 import { LoginPayload } from "./typings";
-import { STATUS_ERROR, STATUS_OK } from "../../constants";
+import { LOGIN, STATUS_ERROR, STATUS_OK } from "../../constants";
 import { loadingStatus } from "../session/sessionSlice";
 
 export const loginService = (
@@ -10,7 +10,7 @@ export const loginService = (
   dispatch: Dispatch<AnyAction>
 ) => {
   dispatch(loadingStatus(true));
-  HttpClientUsers.post("/login", data)
+  HttpClientUsers.post(LOGIN, data)
     .then(
       (response) =>
         response.status === STATUS_OK && dispatch(login(response.data))

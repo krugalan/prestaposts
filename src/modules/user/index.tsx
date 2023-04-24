@@ -1,5 +1,15 @@
-import React from "react";
+import { useUsers } from "../../hooks/useUsers";
+import { UserCard } from "./UserCard";
+import { UsersContainer } from "./components";
 
 export const Users = () => {
-  return <div>Users</div>;
+  const { listUsers } = useUsers();
+
+  return (
+    <UsersContainer>
+      {listUsers?.map((user) => (
+        <UserCard key={user.id} {...user} />
+      ))}
+    </UsersContainer>
+  );
 };

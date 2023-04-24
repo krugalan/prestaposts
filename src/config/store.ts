@@ -5,10 +5,12 @@ import storage from "redux-persist/lib/storage";
 // Reducers
 import auth from "../modules/auth/authSlice";
 import session from "../modules/session/sessionSlice";
+import user from "../modules/user/userSlice";
 
 const appReducer = combineReducers({
   auth,
   session,
+  user,
 });
 
 export const rootReducer = (state: any, action: Action<string>) => {
