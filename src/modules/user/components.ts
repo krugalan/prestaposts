@@ -27,6 +27,7 @@ export const UserCardContainer = styled.div`
   :hover {
     box-shadow: 5px 13px;
     transition: ease 0.5s;
+    cursor: pointer;
   }
 
   @media ${device.laptop} {
