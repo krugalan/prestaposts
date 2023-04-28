@@ -10,7 +10,7 @@ export const HttpClientUsers = axios.create({
   },
 });
 
-export const HttpPostsUsers = axios.create({
+export const HttpPosts = axios.create({
   baseURL: apiPostsUrl,
   timeout: 100000,
   headers: {

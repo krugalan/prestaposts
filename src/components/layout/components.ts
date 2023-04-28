@@ -64,10 +64,49 @@ export const ContainerMenuItemActive = styled.div`
   cursor: pointer;
   background-color: #d25bff;
   color: white;
-  
+
   @media ${device.laptop} {
     width: 200px;
     margin: 20px 0 0 0;
+  }
+
+  @media ${device.desktop} {
+  }
+`;
+
+// Card Container
+
+export const FloatCardContainer = styled.div`
+  text-align: center;
+  padding: 50px 10px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #66adbb;
+
+  :hover {
+    box-shadow: 5px 13px;
+    transition: ease 0.5s;
+    cursor: pointer;
+  }
+
+  @media ${device.laptop} {
+  }
+
+  @media ${device.desktop} {
+  }
+`;
+
+// Grid 3 container
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 20px;
+  width: 80%;
+  height: 100vh;
+  margin: 5% 0;
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media ${device.desktop} {

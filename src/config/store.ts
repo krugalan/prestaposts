@@ -6,11 +6,13 @@ import storage from "redux-persist/lib/storage";
 import auth from "../modules/auth/authSlice";
 import session from "../modules/session/sessionSlice";
 import user from "../modules/user/userSlice";
+import posts from "../modules/posts/postsSlice";
 
 const appReducer = combineReducers({
   auth,
   session,
   user,
+  posts,
 });
 
 export const rootReducer = (state: any, action: Action<string>) => {

@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { H4Text, PText } from "../../../components/layout";
-import { UserCardContainer, UserCardImage } from "../components";
+import { UserCardImage } from "../components";
 import { User } from "../typings";
 import { getUserDetail } from "../services";
 import { PATH_USER_DETAIL } from "../../../constants";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { loadingStatus } from "../../session/sessionSlice";
+import { floatCardContainerHOC } from "../../../components/layout/FloatCardContainerHOC";
 
-export const UserCard = (item: User) => {
+const UserCard = (item: User) => {
+  const { id, avatar, first_name, last_name, email } = item;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { id, avatar, first_name, last_name, email } = item;
 
   const handleUserDetail = async () => {
     dispatch(loadingStatus(true));
@@ -23,7 +24,7 @@ export const UserCard = (item: User) => {
   };
 
   return (
-    <UserCardContainer onClick={handleUserDetail}>
+    <div onClick={handleUserDetail}>
       <UserCardImage src={avatar} />
       <H4Text>
         {first_name} {last_name}
@@ -33,6 +34,8 @@ export const UserCard = (item: User) => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </PText>
-    </UserCardContainer>
+    </div>
   );
 };
+
+export const UserCardFloat = floatCardContainerHOC(UserCard);

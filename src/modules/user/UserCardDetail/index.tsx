@@ -1,4 +1,4 @@
-import { UserCardContainer, UserCardImage } from "../components";
+import { UserCardImage } from "../components";
 import { User } from "../typings";
 import { updateUserById } from "../services";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,8 +6,9 @@ import { loadingStatus } from "../../session/sessionSlice";
 import { InputEditable } from "../../../components/inputs/InputEditable";
 import { updateUserData } from "../userSlice";
 import { selectUsers } from "../selectors";
+import { floatCardContainerHOC } from "../../../components/layout/FloatCardContainerHOC";
 
-export const UserCardDetail = (item: User) => {
+export const UserCardDetail = floatCardContainerHOC((item: User) => {
   const dispatch = useDispatch();
   const listUsers = useSelector(selectUsers);
   const { id, avatar, first_name, last_name, email } = item;
@@ -30,7 +31,7 @@ export const UserCardDetail = (item: User) => {
   };
 
   return (
-    <UserCardContainer>
+    <>
       <UserCardImage src={avatar} />
       <InputEditable
         value={first_name}
@@ -48,6 +49,6 @@ export const UserCardDetail = (item: User) => {
         name="description"
         action={handleChangeValue}
       />
-    </UserCardContainer>
+    </>
   );
-};
+});

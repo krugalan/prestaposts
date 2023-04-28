@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useUsers } from "../../hooks/useUsers";
-import { UserCard } from "./UserCard";
-import { UsersContainer } from "./components";
 import { useSelector } from "react-redux";
 import { selectUsers } from "./selectors";
+import { GridContainer } from "../../components/layout/components";
+import { UserCardFloat } from "./UserCard";
 
 export const Users = () => {
   const { getAllUsers } = useUsers();
@@ -14,9 +14,9 @@ export const Users = () => {
   }, []);
 
   return (
-    <UsersContainer>
+    <GridContainer>
       {listUsers &&
-        listUsers.map((user) => <UserCard key={user.id} {...user} />)}
-    </UsersContainer>
+        listUsers.map((user) => <UserCardFloat key={user.id} {...user} />)}
+    </GridContainer>
   );
 };
