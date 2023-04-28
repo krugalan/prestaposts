@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 export const useUsers = () => {
   const dispatch = useDispatch();
-  const [listUsers, setListUsers] = useState<Users>();
+  const [listUsers, setListUsers] = useState<Users>([]);
 
   useEffect(() => {
     const getAllUsers = async () => {

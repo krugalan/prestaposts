@@ -14,6 +14,10 @@ export const authSlice = createSlice({
       state.token = action.payload.token;
       state.error = undefined;
     },
+    logout: (state) => {
+      state.token = "";
+      state.error = undefined;
+    },
     authFailed: (
       state,
       action: PayloadAction<{ status: number; msg: string }>
@@ -27,6 +31,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { login, authFailed } = authSlice.actions;
+export const { login, authFailed, logout } = authSlice.actions;
 
 export default authSlice.reducer;

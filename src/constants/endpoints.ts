@@ -1,5 +1,5 @@
 export const HOME = "/";
 // AUTH
 export const LOGIN = "/login";
-// USERS
+// POSTS
 export const LIST_USERS = "/users";

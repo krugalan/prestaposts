@@ -26,11 +26,12 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginPayload>();
-  const onSubmit: SubmitHandler<LoginPayload> = (data) =>
-    loginService(data, dispatch);
   const isLoading = useSelector(selectLoading);
   const loginError = useSelector(selectLoginError);
   const token = useSelector(selectLoginToken);
+
+  const onSubmit: SubmitHandler<LoginPayload> = (data) =>
+    loginService(data, dispatch);
 
   useEffect(() => {
     if (token) navigate(`/`);

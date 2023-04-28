@@ -1,6 +1,6 @@
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { HttpClientUsers } from "../../api/HttpClient";
-import { authFailed, login } from "./authSlice";
+import { authFailed, login, logout } from "./authSlice";
 import { LoginPayload } from "./typings";
 import { LOGIN, STATUS_ERROR, STATUS_OK } from "../../constants";
 import { loadingStatus } from "../session/sessionSlice";
@@ -23,3 +23,6 @@ export const loginService = (
     })
     .finally(() => dispatch(loadingStatus(false)));
 };
+
+export const logoutService = (dispatch: Dispatch<AnyAction>) =>
+  dispatch(logout());
