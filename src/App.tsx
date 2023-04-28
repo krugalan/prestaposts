@@ -4,6 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
 import { RoutesProvider } from "./config/RoutesProvider";
 import "./app.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (

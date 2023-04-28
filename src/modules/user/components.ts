@@ -19,7 +19,7 @@ export const UsersContainer = styled.div`
 
 export const UserCardContainer = styled.div`
   text-align: center;
-  padding: 10px;
+  padding: 50px 10px;
   border-style: solid;
   border-radius: 10px;
   border-color: #66adbb;
