@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ContainerHeader } from "../components";
 import { PATH_HOME, PATH_POSTS } from "../../../constants";
 import { logoutService } from "../../../modules/auth/services";
@@ -13,6 +13,7 @@ export type MenuItemType = {
 
 export const MainHeader = () => {
   const dispatch = useDispatch();
+  const [activeItem, setActiveItem] = useState(0);
   const menuItems: MenuItemType[] = [
     {
       path: PATH_HOME,
@@ -27,10 +28,19 @@ export const MainHeader = () => {
       action: () => logoutService(dispatch),
     },
   ];
+
   return (
     <ContainerHeader>
       {menuItems.map((item, id) => (
-        <MenuItem key={id} {...item} />
+        <MenuItem
+          key={id}
+          id={id}
+          path={item.path}
+          menuTitle={item.menuTitle}
+          action={item.action}
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        />
       ))}
     </ContainerHeader>
   );

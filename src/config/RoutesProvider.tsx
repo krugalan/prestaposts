@@ -8,7 +8,8 @@ import { Login } from "../modules/auth";
 import { Users } from "../modules/user";
 import { MainLayout } from "../components/layout/MainLayout";
 import { Posts } from "../modules/posts";
-import { PATH_HOME, PATH_POSTS } from "../constants";
+import { PATH_HOME, PATH_POSTS, PATH_USER_DETAIL } from "../constants";
+import { UserDetail } from "../modules/user/UserDetail";
 
 export const RoutesProvider = () => {
   return (
@@ -21,6 +22,14 @@ export const RoutesProvider = () => {
             element={
               <PrivateRoute>
                 <Users />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={PATH_USER_DETAIL}
+            element={
+              <PrivateRoute>
+                <UserDetail />
               </PrivateRoute>
             }
           />

@@ -62,3 +62,20 @@ export const UserCardDescription = styled.div`
   @media ${device.desktop} {
   }
 `;
+
+// USER DETAIL
+export const UsersDetailContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 20px;
+  width: 80%;
+  height: 100vh;
+  margin: 5% 0;
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.desktop} {
+  }
+`;
