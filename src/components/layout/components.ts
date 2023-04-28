@@ -31,6 +31,8 @@ export const ContainerMenuItem = styled.div`
   border-style: solid;
   border-radius: 10px;
   border-color: #66adbb;
+  width: 80%;
+  margin: 5% 0 0 0;
 
   :hover {
     box-shadow: 4px 8px black;
@@ -40,6 +42,8 @@ export const ContainerMenuItem = styled.div`
     color: white;
   }
   @media ${device.laptop} {
+    width: 200px;
+    margin: 20px 0 0 0;
   }
 
   @media ${device.desktop} {

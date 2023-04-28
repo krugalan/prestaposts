@@ -16,6 +16,7 @@ import { selectLoginError, selectLoginToken } from "../selectors";
 import { useNavigate } from "react-router-dom";
 import { selectLoading } from "../../session/selectors";
 import { SpinnerLoader } from "../../../components/SpinnerLoader";
+import { PATH_HOME } from "../../../constants";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export const Login = () => {
     loginService(data, dispatch);
 
   useEffect(() => {
-    if (token) navigate(`/`);
+    if (token) navigate(PATH_HOME);
   }, [token, navigate]);
 
   return (
