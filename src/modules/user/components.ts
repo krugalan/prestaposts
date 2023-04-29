@@ -18,7 +18,7 @@ export const UsersDetailContainer = styled.div`
 
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 1fr;
+    grid-template-rows: 0.5fr 0.5 fr;
     grid-template-areas:
       "a b"
       "c c";
