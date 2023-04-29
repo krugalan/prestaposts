@@ -12,3 +12,12 @@ export const getPosts = async (): Promise<Post[] | []> => {
     });
   return response;
 };
+
+export const getPostsById = async (id: string): Promise<any> => {
+  const response = await HttpPosts.get(ENDP_POSTS + `/${id}`)
+    .then((response) => response.data)
+    .catch(() =>
+      toastCustom("Error al actualizar el usuario. Reintente en unos minutos.")
+    );
+  return response;
+};

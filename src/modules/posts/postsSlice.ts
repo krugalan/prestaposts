@@ -13,9 +13,12 @@ export const postsSlice = createSlice({
     loadPosts: (state, action: PayloadAction<Post[] | []>) => {
       state.posts = action.payload;
     },
+    loadPostsByUser: (state, action: PayloadAction<Post[] | []>) => {
+      state.posts = action.payload;
+    },
   },
 });
 
-export const { loadPosts } = postsSlice.actions;
+export const { loadPosts, loadPostsByUser } = postsSlice.actions;
 
 export default postsSlice.reducer;

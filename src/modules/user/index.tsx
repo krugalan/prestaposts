@@ -2,21 +2,25 @@ import { useEffect } from "react";
 import { useUsers } from "../../hooks/useUsers";
 import { useSelector } from "react-redux";
 import { selectUsers } from "./selectors";
-import { GridContainer } from "../../components/layout/components";
 import { UserCardFloat } from "./UserCard";
+import { gridContainerHOC } from "../../components/layout/GridContainerHOC";
+import "./styles.css";
 
-export const Users = () => {
+export const Users = gridContainerHOC(() => {
   const { getAllUsers } = useUsers();
   const listUsers = useSelector(selectUsers);
 
   useEffect(() => {
-    !listUsers?.length && getAllUsers();
+    if (!listUsers.length) {
+      getAllUsers();
+    }
   }, []);
 
   return (
-    <GridContainer>
-      {listUsers &&
-        listUsers.map((user) => <UserCardFloat key={user.id} {...user} />)}
-    </GridContainer>
+    <>
+      {listUsers?.map((user) => (
+        <UserCardFloat key={user.id} {...user} />
+      ))}
+    </>
   );
-};
+});

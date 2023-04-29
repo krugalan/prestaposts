@@ -1,24 +1,35 @@
 import { useEffect } from "react";
-import { GridContainer } from "../../components/layout/components";
+import { useSelector } from "react-redux";
 import { usePosts } from "../../hooks/usePosts";
 import { PostCardFloat } from "./PostCard";
 import { Post } from "./typings";
-import { useSelector } from "react-redux";
 import { selectPosts } from "./selectors";
+import { gridContainerHOC } from "../../components/layout/GridContainerHOC";
+import { User } from "../user/typings";
 
-export const Posts = () => {
-  const { getAllPosts } = usePosts();
+export const Posts = gridContainerHOC(({ id }: User) => {
+  const { getAllPosts, getPostsByUser } = usePosts();
   const listPosts = useSelector(selectPosts);
 
   useEffect(() => {
-    !listPosts?.length && getAllPosts();
+    if (!listPosts?.length) {
+      getAllPosts();
+    }
   }, []);
 
+  // useEffect(() => {
+  //   getPostsByUser(id);
+  // }, [id]);
+
   return (
-    <GridContainer>
-      {listPosts?.map((el: Post) => (
-        <PostCardFloat key={el.id} {...el} />
-      ))}
-    </GridContainer>
+    <>
+      {listPosts?.length
+        ? id
+          ? listPosts
+              .filter((el) => el.id === id)
+              .map((el: Post) => <PostCardFloat key={el.id} {...el} />)
+          : listPosts.map((el: Post) => <PostCardFloat key={el.id} {...el} />)
+        : null}
+    </>
   );
-};
+});

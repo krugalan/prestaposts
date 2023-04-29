@@ -1,4 +1,3 @@
-import { UserCardImage } from "../components";
 import { User } from "../typings";
 import { updateUserById } from "../services";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +10,7 @@ import { floatCardContainerHOC } from "../../../components/layout/FloatCardConta
 export const UserCardDetail = floatCardContainerHOC((item: User) => {
   const dispatch = useDispatch();
   const listUsers = useSelector(selectUsers);
-  const { id, avatar, first_name, last_name, email } = item;
+  const { id, first_name, last_name, email } = item;
   const auxDescription = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua.`;
 
@@ -32,7 +31,6 @@ export const UserCardDetail = floatCardContainerHOC((item: User) => {
 
   return (
     <>
-      <UserCardImage src={avatar} />
       <InputEditable
         value={first_name}
         name="first_name"

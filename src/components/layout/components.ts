@@ -3,8 +3,8 @@ import { device } from "../../constants";
 
 export const Container = styled.div`
   height: 100vh;
-  display: grid;
   place-items: center;
+  margin: 5%;
 
   @media ${device.laptop} {
   }
@@ -101,9 +101,7 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 20px;
-  width: 80%;
   height: 100vh;
-  margin: 5% 0;
 
   @media ${device.laptop} {
     grid-template-columns: repeat(3, 1fr);

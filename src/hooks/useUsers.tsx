@@ -15,7 +15,7 @@ export const useUsers = () => {
 
   const updateUser = async (dataPayload: UserUpdatePayload) => {
     dispatch(loadingStatus(true));
-    updateUserById(dataPayload).then((data) => dispatch(loadUsers(data)));
+    updateUserById(dataPayload);
     dispatch(loadingStatus(false));
   };
 

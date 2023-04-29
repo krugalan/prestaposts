@@ -3,43 +3,24 @@ import { device } from "../../constants";
 
 export const UserCardImage = styled.img`
   border-radius: 50%;
-
-  @media ${device.laptop} {
-  }
-
-  @media ${device.desktop} {
-  }
-`;
-
-export const UserCardTitle = styled.div`
-  @media ${device.laptop} {
-  }
-
-  @media ${device.desktop} {
-  }
-`;
-
-export const UserCardDescription = styled.div`
-  @media ${device.laptop} {
-  }
-
-  @media ${device.desktop} {
-  }
 `;
 
 // USER DETAIL
 export const UsersDetailContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 20px;
-  width: 80%;
-  height: 100vh;
-  margin: 5% 0;
+  grid-template-columns: repeat(1 1fr);
+  grid-template-rows: repeat(1 1fr);
+  gap: 20px;
+  grid-template-areas:
+    "a"
+    "b"
+    "c";
 
   @media ${device.laptop} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media ${device.desktop} {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-areas:
+      "a b"
+      "c c";
   }
 `;

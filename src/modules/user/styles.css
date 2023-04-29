@@ -1,0 +1,10 @@
+/* Areas */
+.a {
+  grid-area: a;
+}
+.b {
+  grid-area: b;
+}
+.c {
+  grid-area: c;
+}
